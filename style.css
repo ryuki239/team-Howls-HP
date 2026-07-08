@@ -208,6 +208,13 @@ button { font-family: inherit; background: none; border: none; cursor: pointer; 
   letter-spacing: 0.14em;
 }
 
+/* ★ 追加: ロゴ画像のスタイル */
+.header-logo {
+  height: 32px;
+  width: auto;
+  object-fit: contain;
+}
+
 .main-nav { flex: 1; display: flex; justify-content: center; }
 .main-nav ul { display: flex; gap: 44px; }
 .main-nav a {
@@ -242,11 +249,13 @@ button { font-family: inherit; background: none; border: none; cursor: pointer; 
   flex-direction: column;
   gap: 5px;
   padding: 8px;
+  z-index: 100; /* スマホメニューを開いた時に一番上にくるように追加 */
 }
 .nav-toggle span {
   width: 22px;
   height: 1px;
   background: var(--white);
+  transition: all 0.3s ease; /* アニメーション用に追加 */
 }
 
 /* =====================================================
@@ -431,7 +440,7 @@ button { font-family: inherit; background: none; border: none; cursor: pointer; 
 }
 
 .member-card {
-  width: 260px; /* ★ 5人を上段3人・下段2人でバランスよく中央配置するために変更 ★ */
+  width: 260px;
   display: flex;
   flex-direction: column;
 }
@@ -550,6 +559,17 @@ button { font-family: inherit; background: none; border: none; cursor: pointer; 
   line-height: 1.9;
 }
 
+/* ★ 追加: バナー画像のスタイル */
+.cta-banner {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  margin: 0 auto 40px;
+  border-radius: 4px;
+  border: 1px solid var(--line-strong);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
 .footer-bottom {
   position: relative;
   z-index: 1;
@@ -602,10 +622,46 @@ button { font-family: inherit; background: none; border: none; cursor: pointer; 
 }
 
 @media (max-width: 860px) {
-  .main-nav { display: none; }
+  /* ★ 修正: スマホ用メニューのスタイル */
+  .main-nav { 
+    display: none; 
+    position: absolute;
+    top: 84px; /* ヘッダーの高さ分下げる */
+    left: 0;
+    width: 100%;
+    background: rgba(10, 17, 40, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 32px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  
+  /* メニューが開いた時の状態 */
+  .main-nav.is-active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .main-nav.is-active ul {
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+  }
+
   .header-cta { display: none; }
   .nav-toggle { display: flex; }
   .header-inner { justify-content: space-between; }
+
+  /* ハンバーガーアイコンが「×」になるアニメーション */
+  .nav-toggle.is-active span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+  .nav-toggle.is-active span:nth-child(2) {
+    opacity: 0;
+  }
+  .nav-toggle.is-active span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+  }
 }
 
 @media (max-width: 600px) {
