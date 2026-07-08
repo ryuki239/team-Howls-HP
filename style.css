@@ -208,9 +208,9 @@ button { font-family: inherit; background: none; border: none; cursor: pointer; 
   letter-spacing: 0.14em;
 }
 
-/* ★ 追加: ロゴ画像のスタイル */
+/* ★ 修正: ロゴ画像のサイズを大きく調整しました */
 .header-logo {
-  height: 32px;
+  height: 60px; /* 32pxから60pxに変更 */
   width: auto;
   object-fit: contain;
 }
@@ -249,13 +249,13 @@ button { font-family: inherit; background: none; border: none; cursor: pointer; 
   flex-direction: column;
   gap: 5px;
   padding: 8px;
-  z-index: 100; /* スマホメニューを開いた時に一番上にくるように追加 */
+  z-index: 100;
 }
 .nav-toggle span {
   width: 22px;
   height: 1px;
   background: var(--white);
-  transition: all 0.3s ease; /* アニメーション用に追加 */
+  transition: all 0.3s ease;
 }
 
 /* =====================================================
@@ -310,7 +310,7 @@ button { font-family: inherit; background: none; border: none; cursor: pointer; 
   position: relative;
   z-index: 1;
   max-width: 880px;
-  text-align: center;
+ text-align: center;
 }
 
 .hero-copy {
@@ -626,7 +626,7 @@ button { font-family: inherit; background: none; border: none; cursor: pointer; 
   .main-nav { 
     display: none; 
     position: absolute;
-    top: 84px; /* ヘッダーの高さ分下げる */
+    top: 84px; 
     left: 0;
     width: 100%;
     background: rgba(10, 17, 40, 0.95);
@@ -635,7 +635,6 @@ button { font-family: inherit; background: none; border: none; cursor: pointer; 
     border-bottom: 1px solid var(--line);
   }
   
-  /* メニューが開いた時の状態 */
   .main-nav.is-active {
     display: flex;
     flex-direction: column;
@@ -652,7 +651,6 @@ button { font-family: inherit; background: none; border: none; cursor: pointer; 
   .nav-toggle { display: flex; }
   .header-inner { justify-content: space-between; }
 
-  /* ハンバーガーアイコンが「×」になるアニメーション */
   .nav-toggle.is-active span:nth-child(1) {
     transform: translateY(6px) rotate(45deg);
   }
